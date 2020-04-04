@@ -102,6 +102,34 @@ if [ "$answer" != "${answer#[Yy]}" ] ;then
     else
         sudo apt-get install build-essential nodejs
     fi
+
+    # Check if npm is already installed
+    if [ "$(dpkg -l | awk '/npm/ {print }'|wc -l)" -ge 1 ]; then
+        clear
+        redMessage "> NPM is already installed\nAborting!"
+        sleep 1
+        clear
+        echo ""
+        echo ""
+        redMessage "#######################################################"
+        redMessage "#############                             #############"
+        redMessage "#                     DEVELOPED BY                    #"
+        redMessage "#                github.com/ShutAP1337                #"
+        redMessage "#############                             #############"
+        redMessage "#######################################################"
+        echo ""
+        echo ""
+        greenMessage "NodeJS & NPM installed sucessfully."
+        cyanMessage "Actual Version: $cmd1" 
+        cyanMessage "Actual Version: (NPM): $cmd2"
+        echo ""
+        greenMessage "                Liked it? Give a star :3"
+        redMessage "      https://github.com/ShutAP1337/install-nodejs"
+        echo ""
+        exit 1
+    else
+        sudo apt-get install npm
+    fi
 else
     redMessage "Aborted."
     exit 1
