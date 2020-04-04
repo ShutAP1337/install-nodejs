@@ -77,8 +77,8 @@ if [ "$answer" != "${answer#[Yy]}" ] ;then
     curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bash -
  
     # Check if npm is already installed
-    if [ "$(dpkg -l | awk '/build-essential/ {print }'|wc -l)" -ge 1 ]; then
-        redMessage "> NPM is already installed\nAborting!"
+    if [ "$(dpkg -l | awk '/nodejs/ {print }'|wc -l)" -ge 1 ]; then
+        redMessage "> NodeJS is already installed\nAborting!"
         sleep 1
         clear
         echo ""
